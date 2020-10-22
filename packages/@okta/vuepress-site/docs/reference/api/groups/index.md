@@ -254,11 +254,7 @@ curl -v -X GET \
 
 > **Note:** <ApiLifecycle access="ea" /> The `source` section and the `source` link in the response example below are only present in groups of type `APP_GROUP`. See [Group attributes](#group-attributes) and [Links object](#links-object).
 
-```JSON
-HTTP/1.1 200 OK
-Content-Type: application/json
-Link: <https://${yourOktaDomain}/api/v1/groups?limit=200>; rel="self"
-Link: <https://${yourOktaDomain}/api/v1/groups?after=00garwpuyxHaWOkdV0g4&limit=200>; rel="next"
+```json
 [
   {
     "id": "00g1emaKYZTWRYYRRTSK",
@@ -311,7 +307,7 @@ Link: <https://${yourOktaDomain}/api/v1/groups?after=00garwpuyxHaWOkdV0g4&limit=
       "objectSid": "S-1-5-21-717838489-685202119-709183397-1177",
       "groupScope": "Global",
       "dn": "CN=Engineering Users,OU=Engineering,DC=corp,DC=example,DC=com",
-      "windowsDomainQualifiedName": "CORP\Engineering Users",
+      "windowsDomainQualifiedName": "CORP\\Engineering Users",
       "externalId": "OZJdWdONCU6h7WjQKp+LPA=="
     },
     "source": {
@@ -420,11 +416,7 @@ curl -v -X GET \
 ##### Response example
 
 
-```JSON
-HTTP/1.1 200 OK
-Content-Type: application/json
-Link: <https://${yourOktaDomain}/api/v1/groups?limit=2&filter=type+eq+%22OKTA_GROUP%22>; rel="self"
-Link: <https://${yourOktaDomain}/api/v1/groups?after=00gak46y5hydV6NdM0g4&limit=2&filter=type+eq+%22OKTA_GROUP%22>; rel="next"
+```json
 [
   {
     "id": "00g1emaKYZTWRYYRRTSK",
@@ -513,11 +505,7 @@ curl -v -X GET \
 
 ##### Response example
 
-```JSON
-HTTP/1.1 200 OK
-Content-Type: application/json
-Link: <https://${yourOktaDomain}/api/v1/groups?limit=200&filter=lastUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22>; rel="self"
-Link: <https://${yourOktaDomain}/api/v1/groups?after=00g1emaKYZTWRYYRRTSK&limit=200&filter=lastUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22>; rel="next"
+```json
 [
   {
     "id": "00g1emaKYZTWRYYRRTSK",
@@ -572,11 +560,7 @@ curl -v -X GET \
 
 ##### Response example
 
-```JSON
-HTTP/1.1 200 OK
-Content-Type: application/json
-Link: <https://${yourOktaDomain}/api/v1/groups?limit=200&filter=lastMembershipUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22>; rel="self"
-Link: <https://${yourOktaDomain}/api/v1/groups?after=00g1emaKYZTWRYYRRTSK&limit=200&filter=lastMembershipUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22>; rel="next"
+```json
 [
   {
     "id": "00g1emaKYZTWRYYRRTSK",
@@ -665,11 +649,7 @@ curl -v -X GET \
 
 ##### Response example
 
-```JSON
-HTTP/1.1 200 OK
-Content-Type: application/json
-Link: <https://${yourOktaDomain}/api/v1/groups?limit=200&filter=lastUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22+or+lastMembershipUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22>; rel="self"
-Link: <https://${yourOktaDomain}/api/v1/groups?after=00g1emaKYZTWRYYRRTSK&limit=200&filter=lastUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22+or+lastMembershipUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22>; rel="next"
+```json
 [
   {
     "id": "00g1emaKYZTWRYYRRTSK",
@@ -773,11 +753,11 @@ Use an ID lookup for records that you update to ensure your results contain the 
 
 ##### Search Examples
 
-List groups of type `APP_GROUP` that were created before `01/01/2014` and whose source application has the id `0oa2v0el0gP90aqjJ0g7`.
+List groups of type `APP_GROUP` that were created before `01/01/2014` and whose source application has the ID `0oa2v0el0gP90aqjJ0g7`.
 
     search=type eq "APP_GROUP" and (created lt "2014-01-01T00:00:00.000Z" and source.id eq "0oa2v0el0gP90aqjJ0g7")
 
-List groups that have a `name` that starts with `West Coast` or have a `samAccountName` of `West Coast Users` or whose source application has the id `0oa2v0el0gP90aqjJ0g7`.
+List groups that have a `name` that starts with `West Coast` or have a `samAccountName` of `West Coast Users` or whose source application has the ID `0oa2v0el0gP90aqjJ0g7`.
 
     search=profile.name sw "West Coast" or profile.samAccountName eq "West Coast Users" or source.id eq "0oa2v0el0gP90aqjJ0g7"
 
@@ -794,11 +774,7 @@ curl -v -X GET \
 ##### Response example
 
 
-```JSON
-HTTP/1.1 200 OK
-Content-Type: application/json
-Link: <https://${yourOktaDomain}/api/v1/groups?search=lastUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22+or+lastMembershipUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22>; rel="self"
-Link: <https://${yourOktaDomain}/api/v1/groups?after=00g1emaKYZTWRYYRRTSK&search=lastUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22+or+lastMembershipUpdated+gt+%222015-10-01T00%3A00%3A00.000Z%22>; rel="next"
+```json
 [
   {
     "id": "00g1emaKYZTWRYYRRTSK",
@@ -912,7 +888,6 @@ curl -v -X PUT \
 ##### Response example
 
 ```json
-
 {
   "id": "00ub0oNGTSWTBKOLGLNR",
   "created": "2015-02-06T10:11:28.000Z",
@@ -962,15 +937,13 @@ Removes a group of `OKTA_GROUP` or `APP_GROUP` type from your organization
 
 | Parameter | Description                 | ParamType | DataType | Required | Default |
 | --------- | --------------------------- | --------- | -------- | -------- | ------- |
-| id        | `id` of the Group to delete | URL       | String   | TRUE     |         |
+| id        | ID of the Group to delete | URL       | String   | TRUE     |         |
 
 ##### Response parameters
-
 
 N/A
 
 ##### Request example
-
 
 ```bash
 curl -v -X DELETE \
@@ -980,9 +953,7 @@ curl -v -X DELETE \
 "https://${yourOktaDomain}/api/v1/groups/00ub0oNGTSWTBKOLGLNR"
 ```
 
-
 ##### Response example
-
 
 ```http
 HTTP/1.1 204 No Content
@@ -992,18 +963,16 @@ HTTP/1.1 204 No Content
 
 ### List Group members
 
-
 <ApiOperation method="get" url="/api/v1/groups/${groupId}/users" />
 
 Enumerates all [users](/docs/reference/api/users/#user-object) that are a member of a Group
 
 ##### Request parameters
 
-
 | Parameter | Description                                                | ParamType | DataType | Required | Default |
 | --------- | ---------------------------------------------------------- | --------- | -------- | -------- | ------- |
 | after     | Specifies the pagination cursor for the next page of users | Query     | String   | FALSE    |         |
-| id        | `id` of the Group                                          | URL       | String   | TRUE     |         |
+| id        | ID of the Group                                          | URL       | String   | TRUE     |         |
 | limit     | Specifies the number of user results in a page             | Query     | Number   | FALSE    | 1000    |
 
 > **Note:** Treat the `after` cursor as an opaque value and obtain it through the next link relation. See [Pagination](/docs/reference/api-overview/#pagination).
@@ -1028,11 +997,7 @@ curl -v -X GET \
 
 ##### Response example
 
-```JSON
-HTTP/1.1 200 OK
-Content-Type: application/json
-Link: <https://${yourOktaDomain}/api/v1/groups/00g1fanEFIQHMQQJMHZP/users?limit=200>; rel="self"
-Link: <https://${yourOktaDomain}/api/v1/groups/00g1fanEFIQHMQQJMHZP/users?after=00u1f9cMYQZFMPVXIDIZ&limit=200>; rel="next"
+```json
 [
   {
     "id": "00u1f96ECLNVOKVMUSEA",
@@ -1109,7 +1074,7 @@ Application imports are responsible for managing group memberships for groups of
 
 | Parameter | Description     | ParamType | DataType | Required | Default |
 | --------- | --------------- | --------- | -------- | -------- | ------- |
-| groupId   | id of the Group | URL       | String   | TRUE     |         |
+| groupId   | `id` of the Group | URL       | String   | TRUE     |         |
 | userId    | `id` of a user  | URL       | String   | TRUE     |         |
 
 ##### Response parameters
@@ -1236,7 +1201,6 @@ curl -v -X POST \
 ##### Response example
 
 ```json
-
 {
   "type": "group_rule",
   "id": "0pr3f7zMZZHPgUoWO0g4",
@@ -1406,10 +1370,6 @@ curl -v -X GET \
 ##### Response example
 
 ```json
-HTTP/1.1 200 OK
-Content-Type: application/json
-Link: <https://${yourOktaDomain}/api/v1/groups/rules?limit=20>; rel="self"
-Link: <https://${yourOktaDomain}/api/v1/groups/rules?after=0pr3f7zMZZHPgUoWO0g4&limit=20>; rel="next"
 [
   {
     "type": "group_rule",
@@ -1498,7 +1458,7 @@ Fetches a specific Group rule by ID from your organization
 | Parameter      | Description                                                    | ParamType  | DataType                          | Required | Default |
 | -------------- | -------------------------------------------------------------- | ---------- | --------------------------------- | -------- | ------- |
 | expand         | If specified as `groupIdToGroupNameMap`, then show Group names | Query      | String                            | FALSE    |         |
-| id             | id of a Group rule                                             | URL        | String                            | TRUE     |         |
+| id             | ID of a Group Rule                                             | URL        | String                            | TRUE     |         |
 
 ##### Response parameters
 
@@ -1562,7 +1522,7 @@ Removes a specific Group rule by ID from your organization
 
 | Parameter      | Description                                                  | ParamType  | DataType                          | Required | Default |
 | -------------- | ------------------------------------------------------------ | ---------- | --------------------------------- | -------- | ------- |
-| `id`             | ID of a Group rule                                           | URL        | String                            | TRUE     |         |
+| `id`             | ID of a Group Rule                                           | URL        | String                            | TRUE     |         |
 
 ##### Response parameters
 
@@ -1598,7 +1558,7 @@ Activates a specific Group rule by ID from your organization
 
 | Parameter      | Description                                                  | ParamType  | DataType                          | Required | Default |
 | -------------- | ------------------------------------------------------------ | ---------- | --------------------------------- | -------- | ------- |
-| `id`             | ID of a Group rule                                           | URL        | String                            | TRUE     |         |
+| `id`             | ID of a Group Rule                                           | URL        | String                            | TRUE     |         |
 
 ##### Response parameters
 
@@ -1634,7 +1594,7 @@ Deactivates a specific Group rule by ID from your organization
 
 | Parameter      | Description                                                  | ParamType  | DataType                          | Required | Default |
 | -------------- | ------------------------------------------------------------ | ---------- | --------------------------------- | -------- | ------- |
-| `id `            | ID of a group rule                                           | URL        | String                            | TRUE     |         |
+| `id `            | ID of a Group Rule                                           | URL        | String                            | TRUE     |         |
 
 ##### Response parameters
 
@@ -1673,7 +1633,7 @@ Enumerates all [Applications](/docs/reference/api/apps/#application-object) that
 | Parameter | Description                                               | ParamType | DataType | Required | Default |
 | --------- | --------------------------------------------------------- | --------- | -------- | -------- | ------- |
 | after     | Specifies the pagination cursor for the next page of apps | Query     | String   | FALSE    |         |
-| id        | id of the Group                                           | URL       | String   | TRUE     |         |
+| id        | ID of the Group                                           | URL       | String   | TRUE     |         |
 | limit     | Specifies the number of app results for a page            | Query     | Number   | FALSE    | 20      |
 
 > **Note:** Treat the page cursor as an opaque value and obtain it through the next link relation. See [Pagination](/docs/reference/api-overview/#pagination).
@@ -1695,11 +1655,7 @@ curl -v -X GET \
 ##### Response example
 
 
-```JSON
-HTTP/1.1 200 OK
-Content-Type: application/json
-Link: <https://${yourOktaDomain}/api/v1/groups/00g1fanEFIQHMQQJMHZP/apps>; rel="self"
-Link: <https://${yourOktaDomain}/api/v1/groups/00g1fanEFIQHMQQJMHZP/apps?after=0oafxqCAJWWGELFTYASJ>; rel="next"
+```json
 [
  {
         "id": "0oafwvZDWJKVLDCUWUAC",
