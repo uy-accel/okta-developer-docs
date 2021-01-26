@@ -29,7 +29,9 @@ After transferring your domain, you need to create an origin CA certificate:
 
 11. Paste the contents of `private.key` in the **Private key** box. Click **Next**.
 12. You are prompted to add a [CNAME record](https://en.wikipedia.org/wiki/CNAME_record). Add this to your Cloudflare DNS, and then click **Finish**.
-13. Wait until `https://<id.domain.name>` resolves in your browser before you continue.
+13. Make sure your entry is orange cloud (proxied).
+14. In Cloudflare, go to SSL/TLS, Overview and set your SSL/TLS encryption to Full or FUll (strict).
+15. Wait until `https://<id.domain.name>` resolves in your browser before you continue.
 
 > **Note:** When you first try this, it's possible that your network caches DNS entries, and you won't be able to get to `id.example.com`. As a workaround, you can tether with your phone, then graph the IP address and add it as an entry to your `hosts`.
 
